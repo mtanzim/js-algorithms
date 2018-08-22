@@ -1,6 +1,7 @@
 # Algorithms with Javascript
 
 [Source Course](http://www.lynda.com/Java-tutorials/Introduction-Data-Structures-Algorithms-Java/656821-2.html)
+
 [PDF Notes](https://drive.google.com/open?id=1XC5MBYbeT18OmOpW9VnaVa9mFmBogPwb)
 
 ## Purpose
