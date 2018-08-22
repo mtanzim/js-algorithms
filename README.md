@@ -2,7 +2,7 @@
 
 [Source Course](http://www.lynda.com/Java-tutorials/Introduction-Data-Structures-Algorithms-Java/656821-2.html)
 
-# Purpose
+## Purpose
 
 - Study the fundamentals of data structures and algorithms
 - Expand knowledge of Javascript by implementing algorithms with JS
