@@ -10,9 +10,9 @@ function selectionSort(origArr, type = 'selection') {
     let minIndex = i;
     let minVal = arr[i];
     for (let j = i; j < arr.length; j++) {
-      if (arr[j]<minVal) {
-        minVal=arr[j];
-        minIndex=j;
+      if (arr[j] < minVal) {
+        minVal = arr[j];
+        minIndex = j;
       }
     }
     console.log(`\nPass: ${i}`);

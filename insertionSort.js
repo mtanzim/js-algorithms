@@ -4,45 +4,34 @@ const unsortedArrs = [
   [12, -7, 9, 5, 4, 2, 1],
   [12, 11, 9, 5, -6, 2, 1],
 ];
-
-
 const testSorted = require('./testSorted');
 
-
 function insertionSort(origArr, type = 'insertion') {
-
   console.log(`Applying ${type} sort`);
-
   let arr = [].concat(origArr);
   for (let i = 1; i < arr.length; i++) {
     let temp = arr[i];
     // console.log(`\nPass: ${i}`);
     // console.log(`temp: ${temp}`);
     // console.log(`outer arr start: ${arr}`);
-    for (let j = i-1; j >= 0; j--) {
+    for (let j = i - 1; j >= 0; j--) {
       // console.log(`i: ${i}`);
       // console.log(`j: ${j}`);
       // console.log(`arr inner start: ${arr}`);
-      let tempInner=arr[i];
-      
+      let tempInner = arr[i];
       if (temp < arr[j]) {
-        tempInner =  arr[j+1];
-        arr[j+1] = arr[j];
+        tempInner = arr[j + 1];
+        arr[j + 1] = arr[j];
       }
-      
       if (temp >= tempInner) {
-        arr[j]=temp;
+        arr[j] = temp;
       }
-      
       // console.log(`arr inner end: ${arr}\n`);
-      
-      
     }
     // console.log(`outer arr end: ${arr}\n`);
     // arr[minIndex] = arr[i];
     // arr[i] = minVal;
   }
-
   return arr;
 }
 

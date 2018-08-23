@@ -1,6 +1,6 @@
 const unsortedArr = [12, 11, 9, 5, 4, 2, 1];
 
-function bubbleSort (origArr, type='bubble')  {
+function bubbleSort(origArr, type = 'bubble') {
 
   console.log(`Applying ${type} sort`);
 
