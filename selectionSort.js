@@ -1,9 +1,9 @@
 const testSorted = require('./testSorted');
-const unsortedArr = [-12, 11, 9, -5, 4, 2, 1];
+// const unsortedArr = [-12, 11, 9, -5, 4, 2, 1];
 
-function selectionSort(origArr, type = 'selection') {
+module.exports = function selectionSort(origArr, type = 'selection') {
 
-  console.log(`Applying ${type} sort`);
+  // console.log(`Applying ${type} sort`);
 
   let arr = [].concat(origArr);
   for (let i = 0; i < arr.length; i++) {
@@ -15,15 +15,15 @@ function selectionSort(origArr, type = 'selection') {
         minIndex = j;
       }
     }
-    console.log(`\nPass: ${i}`);
-    console.log(`minval: ${minVal}`);
-    console.log(`arr: ${arr}\n`);
+    // console.log(`\nPass: ${i}`);
+    // console.log(`minval: ${minVal}`);
+    // console.log(`arr: ${arr}\n`);
     arr[minIndex] = arr[i];
     arr[i] = minVal;
   }
 
-  return arr;
+  return (testSorted(arr) ? arr : new Error('Not sorted!'));
 }
 
-console.log(`Initial array is ${unsortedArr}`);
-console.log(`sorted array is ${selectionSort(unsortedArr)}`);
+// console.log(`Initial array is ${unsortedArr}`);
+// console.log(`sorted array is ${selectionSort(unsortedArr)}`);

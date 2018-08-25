@@ -5,9 +5,8 @@ const unsortedArrs = [
   [12, 11, 9, 5, -6, 2, 1],
 ];
 const testSorted = require('./testSorted');
-
-function insertionSort(origArr, type = 'insertion') {
-  console.log(`Applying ${type} sort`);
+const insertionSort = function (origArr, type = 'insertion') {
+  // console.log(`Applying ${type} sort`);
   let arr = [].concat(origArr);
   for (let i = 1; i < arr.length; i++) {
     let temp = arr[i];
@@ -32,12 +31,16 @@ function insertionSort(origArr, type = 'insertion') {
     // arr[minIndex] = arr[i];
     // arr[i] = minVal;
   }
-  return arr;
+  return (testSorted(arr) ? arr : new Error('Not sorted!'));
 }
 
-unsortedArrs.forEach(unsortedArr => {
+
+// use when running code by
+/* unsortedArrs.forEach(unsortedArr => {
   console.log(`\nInitial array is ${unsortedArr}`);
   let sortedArr = [].concat(insertionSort(unsortedArr));
   console.log(`sorted array is ${sortedArr}`);
   console.log(`confirm sorted ${testSorted(sortedArr)}\n`);
 });
+ */
+module.exports =  insertionSort;

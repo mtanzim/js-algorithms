@@ -1,8 +1,9 @@
-const unsortedArr = [12, 11, 9, 5, 4, 2, 1];
+// const unsortedArr = [12, 11, 9, 5, 4, 2, 1];
+const testSorted = require('./testSorted');
 
-function bubbleSort(origArr, type = 'bubble') {
+module.exports = function bubbleSort(origArr, type = 'bubble') {
 
-  console.log(`Applying ${type} sort`);
+  // console.log(`Applying ${type} sort`);
 
   let arr = [].concat(origArr);
   for (let i = 0; i < arr.length - 1; i++) {
@@ -15,8 +16,8 @@ function bubbleSort(origArr, type = 'bubble') {
     }
   }
 
-  return arr;
+  return (testSorted(arr) ? arr : new Error('Not sorted!'));
 }
 
-console.log(`Initial array is ${unsortedArr}`);
-console.log(`sorted array is ${bubbleSort(unsortedArr)}`);
+// console.log(`Initial array is ${unsortedArr}`);
+// console.log(`sorted array is ${bubbleSort(unsortedArr)}`);

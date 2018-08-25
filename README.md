@@ -11,4 +11,8 @@
 - Host a set of written notes for future reference/study
 - Host code for future reference/study
 
+## Links for further study
+
+- [Sorting Algorithms Animated](https://www.toptal.com/developers/sorting-algorithms)
+
 ## Lessons Learned
