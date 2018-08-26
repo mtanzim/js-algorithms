@@ -11,8 +11,11 @@
 - Host a set of written notes for future reference/study
 - Host code for future reference/study
 
-## Links for further study
+## Links for Further Study
 
 - [Sorting Algorithms Animated](https://www.toptal.com/developers/sorting-algorithms)
+- [Pass by Value vs Reference in JS](https://codeburst.io/explaining-value-vs-reference-in-javascript-647a975e12a0)
+- Linked Lists in JS
+  - <https://codeburst.io/js-data-structures-linked-list-3ed4d63e6571>
 
 ## Lessons Learned
