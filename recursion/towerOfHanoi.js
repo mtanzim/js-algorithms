@@ -1,7 +1,7 @@
 // use this variable to control how many pegs are to be used
 // globalN is the disk with the largest radius
 // Objective is to move blocks from A to C
-let globalN = 3;
+let globalN = 7;
 
 let A = { name: 'A', data: [] };
 let B = { name: 'B', data: [] };
@@ -23,13 +23,17 @@ function move(n, towerFrom, towerTo, towerIntermediate) {
   checkSorted(towerTo.data);
   checkSorted(towerIntermediate.data);
 
-  if (n <= 2) {
+/*   if (n <= 2) {
     towerIntermediate.data.push(towerFrom.data.pop());
     globalCounter++;
     towerTo.data.push(towerFrom.data.pop());
     globalCounter++;
     towerTo.data.push(towerIntermediate.data.pop());
+    globalCounter++; */
+  if (n === 1) {
+    towerTo.data.push(towerFrom.data.pop());
     globalCounter++;
+    // console.log('Finished');
   } else {
     move(n - 1, towerFrom, towerIntermediate, towerTo);
     towerTo.data.push(towerFrom.data.pop());
