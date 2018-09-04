@@ -4,7 +4,7 @@ const unsortedArrs = require('../basicSorting/arrCollection');
 
 
 const merge = function (arr, start, middle, end) {
-  console.log('Doing nothing for now!');
+  // console.log('Doing nothing for now!');
 }
 
 const mergeSort = function (origArr, start, end, type = 'merge') {
@@ -13,12 +13,12 @@ const mergeSort = function (origArr, start, end, type = 'merge') {
   let middle = Math.floor((start + end) / 2);
 
   if (start < end){
+    console.log(`Applying ${type} sort with start: ${start}, end: ${end}, middle: ${middle}`);
     mergeSort(origArr, start, middle);
     mergeSort(origArr, middle + 1, end);
     merge(origArr, start, middle, end);
   }
 
-  console.log(`Applying ${type} sort with start: ${start}, end: ${end}, middle: ${middle}`);
 
   return [0, 0];
 
