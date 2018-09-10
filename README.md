@@ -17,5 +17,10 @@
 - [Pass by Value vs Reference in JS](https://codeburst.io/explaining-value-vs-reference-in-javascript-647a975e12a0)
 - Linked Lists in JS
   - <https://codeburst.io/js-data-structures-linked-list-3ed4d63e6571>
+- [Merge Sort Algorithm Example](https://www.geeksforgeeks.org/merge-sort/)
 
 ## Lessons Learned
+
+- When using recursion, be careful to return functions/results all the way back up the stack
+  - [See BST](./binarySearchTrees/BST.js)
+  - <https://stackoverflow.com/questions/10719480/javascript-return-of-recursive-function>

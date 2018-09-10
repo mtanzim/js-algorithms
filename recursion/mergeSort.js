@@ -63,7 +63,7 @@ const mergeSort = function (origArr, start, end, type = 'merge') {
     merge(origArr, start, middle, end, false);
   }
   return origArr;
-}
+};
 // use when running code by
 unsortedArrs.forEach(unsortedArr => {
   console.log(`\nInitial array is ${unsortedArr}`);
