@@ -18,6 +18,7 @@
 - Linked Lists in JS
   - <https://codeburst.io/js-data-structures-linked-list-3ed4d63e6571>
 - [Merge Sort Algorithm Example](https://www.geeksforgeeks.org/merge-sort/)
+- [Binary Search Trees in JS](https://www.geeksforgeeks.org/implementation-binary-search-tree-javascript/)
 
 ## Lessons Learned
 
