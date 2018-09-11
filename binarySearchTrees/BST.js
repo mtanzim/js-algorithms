@@ -8,13 +8,25 @@ class BST {
     console.log(JSON.stringify(this, null, 2));
   }
 
-  findNode (input) {
+  findNode(input) {
     return this.root.findNode(input, this.root) || null;
   }
 
-  insertNode (input) {
+  findMin () {
+    return this.root.findMinNode(this.root);
+  }
+
+  findMax () {
+    return this.root.findMaxNode(this.root);
+  }
+
+  deleteNode(input) {
+    return this.root.deleteNode(input, this.root) || null;
+  }
+
+  insertNode(input) {
     if (this.root === null) {
-      this.root =  new TreeNode(input);
+      this.root = new TreeNode(input);
     } else {
       this.root.insertNode(input);
     }
@@ -41,27 +53,30 @@ const driverCode = () => {
 
   // myBST = new BST(grandParentNode);
 
-  let treeArr = [100, 5, 6, -99, 45, 67];
+  let treeArr = [2, 4, 3, 5, -1];
 
   myBST = new BST();
-  // myBST.printBST();
   // console.log(`\n\n${myBST.findNode(39)}`);
 
-  treeArr.forEach (a=> myBST.insertNode(a));
+  treeArr.forEach(a => myBST.insertNode(a));
   myBST.printBST();
-  treeArr.forEach(a => console.log(`${myBST.findNode(a)}`));
+  // console.log(myBST.findMin().node.data);
+  // console.log(myBST.findMax().node.data);
+  /*   console.log('\nparents:')
+  treeArr.forEach(a => console.log(`${myBST.findNode(a).parent ? myBST.findNode(a).parent.data : 'no parent'}`));
+  console.log('\nnodes:')
+  treeArr.forEach(a => console.log(`${myBST.findNode(a).node.data}`));
+  console.log(`\nisLeftChild`)
+  treeArr.forEach(a => console.log(`${myBST.findNode(a).isLeftChild}`)); */
   
-/*   myBST.insertNode(1);
-  myBST.insertNode(-1);
-  myBST.insertNode(107);
-  myBST.insertNode(56);
+  // delete each node
+  treeArr
+  .filter(d => d === -1)
+  .forEach ( d => myBST.deleteNode(d));
+  
   myBST.printBST();
-
-  console.log(`\n\n${myBST.findNode(1)}`);
-  console.log(`\n\n${myBST.findNode(-1)}`);
-  console.log(`\n\n${myBST.findNode(107)}`);
-  console.log(`\n\n${myBST.findNode(56)}`); */
-
+  // console.log(myBST.findMin().node.data);
+  // console.log(myBST.findMax().node.data);
 }
 
 driverCode();
