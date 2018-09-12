@@ -6,9 +6,18 @@ class BST {
   }
   printBST() {
     // console.log(this);
-    console.log( this && JSON.stringify(this, null, 2));
+    console.log(this && JSON.stringify(this, null, 2));
   }
 
+  inOrderTraverse() {
+    return this.root.inOrderTraverse(this.root);
+  }
+  preOrderTraverse() {
+    return this.root.preOrderTraverse(this.root);
+  }
+  postOrderTraverse() {
+    return this.root.postOrderTraverse(this.root);
+  }
   findNode(input) {
     return this.root.findNode(input, this.root) || null;
   }
@@ -47,14 +56,33 @@ const driverCode = () => {
 
   treeArr.forEach(a => myBST.insertNode(a));
   myBST.printBST();
-
-  // delete a node
+  
+  let arrPreOrder = myBST.preOrderTraverse();
+  let arrPostOrder = myBST.postOrderTraverse();
+  let arrInOrder = myBST.inOrderTraverse();
+  
+  
+  
+  
+  
+  // delete node(s)
   treeArr
-    // .filter(d => d === -1)
-    .forEach(d => myBST.deleteNode(d));
-    
-    // myBST.printBST();
-
+  // .filter(d => d === -1)
+  .reverse()
+  .forEach(d => myBST.deleteNode(d));
+  
+  console.log(arrInOrder);
+  treeArr.forEach(a => myBST.insertNode(a));
+  arrInOrder.forEach(d => myBST.deleteNode(d));
+  myBST.printBST();
+  console.log(arrPreOrder);
+  treeArr.forEach(a => myBST.insertNode(a));
+  arrPreOrder.forEach(d => myBST.deleteNode(d));
+  myBST.printBST();
+  console.log(arrPostOrder);
+  treeArr.forEach(a => myBST.insertNode(a));
+  arrPostOrder.forEach(d => myBST.deleteNode(d));
+  myBST.printBST();
 }
 
 driverCode();

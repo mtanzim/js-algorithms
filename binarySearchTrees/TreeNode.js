@@ -11,10 +11,47 @@ class TreeNode {
       this.leftChild = node.leftChild ;
       this.rightChild = node.rightChild;
     } else {
-      console.log('Nulling tree!');
+      // console.log('Nulling tree!');
       this.data = null;
       this.leftChild = null ;
       this.rightChild = null;
+    }
+  }
+
+  inOrderTraverse (curNode, arr = []) {
+    // console.log(`Now at ${curNode ? curNode.data: 'empty'}`)
+    if (curNode !== null) {
+      this.inOrderTraverse(curNode.leftChild, arr);
+      // console.log(curNode.data);
+      arr.push(curNode.data)
+      // console.log(arr);
+      // return arr;
+      this.inOrderTraverse(curNode.rightChild, arr);
+      return arr;
+    }
+  }
+
+  preOrderTraverse(curNode, arr = []) {
+    // console.log(`Now at ${curNode ? curNode.data: 'empty'}`)
+    if (curNode !== null) {
+      // console.log(curNode.data);
+      arr.push(curNode.data)
+      this.preOrderTraverse(curNode.leftChild, arr);
+      this.preOrderTraverse(curNode.rightChild, arr);
+      // console.log(arr);
+      return arr;
+    }
+  }
+
+  postOrderTraverse(curNode, arr = []) {
+    // console.log(`Now at ${curNode ? curNode.data: 'empty'}`)
+    if (curNode !== null) {
+      this.postOrderTraverse(curNode.leftChild, arr);
+      this.postOrderTraverse(curNode.rightChild, arr);
+      // console.log(curNode.data);
+      arr.push(curNode.data)
+      // console.log(arr);
+      return arr;
     }
   }
 
@@ -50,7 +87,7 @@ class TreeNode {
   deleteNode(input, startNode) {
     let nodeToDel = this.findNode(input, startNode);
     if (nodeToDel.node) {
-      console.log(`Deleting ${nodeToDel.node.data}`);
+      // console.log(`Deleting ${nodeToDel.node.data}`);
       // case 1: leaf node
       if (nodeToDel.node.leftChild === null && nodeToDel.node.rightChild === null && nodeToDel.parent !== null) {
         nodeToDel.isLeftChild ? nodeToDel.parent.leftChild = null : nodeToDel.parent.rightChild = null;
@@ -76,8 +113,8 @@ class TreeNode {
       } else {
 
         let successorNode = this.findMinNode(nodeToDel.node.rightChild, nodeToDel.node || null);
-        console.log(`successor: ${successorNode.node.data}`);
-        console.log(`node's parent: ${nodeToDel.parent ? nodeToDel.parent.data : 'no parent'}`);
+        // console.log(`successor: ${successorNode.node.data}`);
+        // console.log(`node's parent: ${nodeToDel.parent ? nodeToDel.parent.data : 'no parent'}`);
         // console.log('Node to delete!!!!!!!!');
         // console.log(nodeToDel.node);
         // console.log('Successor Node');
@@ -101,9 +138,9 @@ class TreeNode {
           nodeToDel.isLeftChild ? nodeToDel.parent.leftChild = successorNode.node : nodeToDel.parent.rightChild = successorNode.node;
         }
       }
-      console.log(`\nAfter Delete:`)
-      console.log(JSON.stringify(this, null, 2));
-      console.log(`END\n`)
+      // console.log(`\nAfter Delete:`)
+      // console.log(JSON.stringify(this, null, 2));
+      // console.log(`END\n`)
     }
   }
 
