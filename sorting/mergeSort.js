@@ -64,12 +64,17 @@ const mergeSort = function (origArr, start, end, type = 'merge') {
   }
   return origArr;
 };
-// use when running code by
-unsortedArrs.forEach(unsortedArr => {
-  console.log(`\nInitial array is ${unsortedArr}`);
-  let sortedArr = [].concat(mergeSort(unsortedArr, 0, unsortedArr.length - 1));
-  console.log(`sorted array is [${sortedArr}]`);
-  console.log(`confirm sorted ${testSorted(sortedArr)}\n`);
-});
 
+function driverCode () {
+
+  // use when running code by
+  unsortedArrs.forEach(unsortedArr => {
+    console.log(`\nInitial array is ${unsortedArr}`);
+    let sortedArr = [].concat(mergeSort(unsortedArr, 0, unsortedArr.length - 1));
+    console.log(`sorted array is [${sortedArr}]`);
+    console.log(`confirm sorted ${testSorted(sortedArr)}\n`);
+  });
+}
 module.exports = mergeSort;
+
+driverCode();
