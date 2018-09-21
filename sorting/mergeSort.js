@@ -1,5 +1,5 @@
-const testSorted = require('../basicSorting/testSorted');
-const unsortedArrs = require('../basicSorting/arrCollection');
+const testSorted = require('./testSorted');
+const unsortedArrs = require('./arrCollection');
 
 const merge = function (arr, start, middle, end, debug=false) {
 
