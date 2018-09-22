@@ -83,7 +83,7 @@ module.exports = CircularQueue;
   console.log('Printing queue after dequeuing: ');
   cq.print();
   
-  console.log('Enqueu after dequeue');
+  console.log('Enqueue after dequeue');
   [0,1,2].forEach(item => cq.enqueue(item));
   cq.print();
   
@@ -92,7 +92,7 @@ module.exports = CircularQueue;
   console.log('Printing queue after dequeuing again: ');
   cq.print();
   
-  console.log('Enqueu after dequeue again');
+  console.log('Enqueue after dequeue again');
   [0,1,2].forEach(item => cq.enqueue(item));
   cq.print();
 

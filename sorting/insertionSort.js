@@ -1,9 +1,3 @@
-/* const unsortedArrs = [
-  [12, 11, 9, 5, 4, 2, 1],
-  [12, 11, -1, 5, 4, 2, 1],
-  [12, -7, 9, 5, 4, 2, 1],
-  [12, 11, 9, 5, -6, 2, 1],
-]; */
 const testSorted = require('./testSorted');
 const insertionSort = function (origArr, type = 'insertion') {
   // console.log(`Applying ${type} sort`);
