@@ -1,4 +1,5 @@
 const testSorted = require('./testSorted');
+const unsortedArrs = require('./arrCollection')
 const insertionSort = function (origArr, type = 'insertion') {
   // console.log(`Applying ${type} sort`);
   let arr = [].concat(origArr);
@@ -30,11 +31,16 @@ const insertionSort = function (origArr, type = 'insertion') {
 
 
 // use when running code by
-/* unsortedArrs.forEach(unsortedArr => {
-  console.log(`\nInitial array is ${unsortedArr}`);
-  let sortedArr = [].concat(insertionSort(unsortedArr));
-  console.log(`sorted array is ${sortedArr}`);
-  console.log(`confirm sorted ${testSorted(sortedArr)}\n`);
-});
- */
+function driver() {
+  
+  unsortedArrs.forEach(unsortedArr => {
+    console.log(`\nInitial array is ${unsortedArr}`);
+    let sortedArr = [].concat(insertionSort(unsortedArr));
+    console.log(`sorted array is ${sortedArr}`);
+    console.log(`confirm sorted ${testSorted(sortedArr)}\n`);
+  });
+}
+
+driver();
+
 module.exports =  insertionSort;
