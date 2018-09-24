@@ -17,7 +17,7 @@ module.exports = function bubbleSort(origArr, type = 'bubble') {
   }
 
   return (testSorted(arr) ? arr : new Error('Not sorted!'));
-}
+};
 
 // console.log(`Initial array is ${unsortedArr}`);
 // console.log(`sorted array is ${bubbleSort(unsortedArr)}`);

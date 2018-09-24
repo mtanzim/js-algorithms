@@ -13,7 +13,7 @@ const genHarr = function (arrLength) {
     h = 3 * h + 1;
   }
   return hArr.reverse();
-}
+};
 
 const shellSort = function (arr, isBubble = true) {
 
@@ -58,7 +58,7 @@ const shellSort = function (arr, isBubble = true) {
       }
     });
   return arr;
-}
+};
 
 
 function driver() {

@@ -22,7 +22,7 @@ const insertionSort = function (origArr, type = 'insertion') {
 
   }
   return (testSorted(arr) ? arr : new Error('Not sorted!'));
-}
+};
 
 module.exports =  insertionSort;
 

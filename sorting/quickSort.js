@@ -4,7 +4,7 @@ const unsortedArrs = require('./arrCollection');
 // unsortedArrs.forEach(arr => console.log(arr));
 const partition = function (arr, start, end, debug = false) {
 
-  if (debug) console.log(`\npartitioning [ ${arr} ]`)
+  if (debug) console.log(`\npartitioning [ ${arr} ]`);
 
   let pivot = arr[end];
   let i = start;
@@ -28,7 +28,7 @@ const partition = function (arr, start, end, debug = false) {
   }
   return i;
 
-}
+};
 
 const quickSort = function (arr, start, end, debug = false) {
   // console.log(arr);
@@ -42,14 +42,14 @@ const quickSort = function (arr, start, end, debug = false) {
     if (debug) console.log(`after left sort [${arr}]`);
     quickSort(arr, pivot + 1, end);
     if (debug) console.log(`after right sort [${arr}]`);
-  };
+  }
 
   return arr;
-}
+};
 
 const quickDriver = function (arr) {
   return quickSort([].concat(arr), 0, arr.length - 1);
-}
+};
 
 module.exports = quickDriver;
 
@@ -57,7 +57,7 @@ function driver() {
   unsortedArrs
     // .filter( (a,i) => i === 1 )
     .forEach(arr => {
-      console.log(`Sorting [ ${arr} ]`)
+      console.log(`Sorting [ ${arr} ]`);
       quickSort(arr, 0, arr.length - 1);
       console.log(`Sorted [ ${arr} ]`);
       console.log(`isSorted: ${testSorted(arr) ? 'YES' : 'NO'}`);

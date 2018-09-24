@@ -43,17 +43,17 @@ const merge = function (arr, start, middle, end, debug=false) {
     arr[k] = left[i];
     k ++;
     i ++;
-  };
+  }
   // copy over remainder of right if any 
   while (j < right.length) {
     arr[k] = right[j];
     k ++;
     j ++;
-  };
+  }
 
   // console.log(`merged : [${arr}]`);
 
-}
+};
 
 const mergeSort = function (origArr, start, end, type = 'merge') {
   let middle = Math.floor((start + end) / 2);
@@ -67,7 +67,7 @@ const mergeSort = function (origArr, start, end, type = 'merge') {
 
 const mergeDriver = function (arr) {
   return (mergeSort([].concat(arr), 0, arr.length - 1));
-}
+};
 
 function driverCode () {
 
