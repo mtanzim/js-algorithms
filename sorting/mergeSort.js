@@ -65,6 +65,10 @@ const mergeSort = function (origArr, start, end, type = 'merge') {
   return origArr;
 };
 
+const mergeDriver = function (arr) {
+  return (mergeSort([].concat(arr), 0, arr.length - 1));
+}
+
 function driverCode () {
 
   // use when running code by
@@ -75,6 +79,6 @@ function driverCode () {
     console.log(`confirm sorted ${testSorted(sortedArr)}\n`);
   });
 }
-module.exports = mergeSort;
+module.exports = mergeDriver;
 
-driverCode();
+// driverCode();

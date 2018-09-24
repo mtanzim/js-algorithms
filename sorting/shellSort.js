@@ -2,6 +2,8 @@ const testSorted = require('./testSorted');
 const unsortedArrs = require('./arrCollection');
 const bubbleSort = require('./bubbleSort');
 const insertionSort = require('./insertionSort');
+const mergeSort = require('./mergeSort');
+const quickSort = require('./quickSort');
 
 const genHarr = function (arrLength) {
   let hArr = [];
@@ -10,11 +12,10 @@ const genHarr = function (arrLength) {
     hArr.push(h);
     h = 3 * h + 1;
   }
-
   return hArr.reverse();
 }
 
-const shellSort = function (arr) {
+const shellSort = function (arr, isBubble = true) {
 
   let hArr = genHarr(arr.length);
   // console.log(`Knuth array: [ ${hArr} ]`);
@@ -38,9 +39,13 @@ const shellSort = function (arr) {
 
         // console.log(`unsorted Temp Arr: ${tempArr}`);
         // console.log(`positions Arr: ${tempPos}`);
-        // let sortedTempArr = insertionSort(tempArr);
-        let sortedTempArr = bubbleSort(tempArr);
-        // let sortedTempArr = insertionSort(tempArr);
+
+        let sortedTempArr = [];
+        sortedTempArr = !testSorted(tempArr) ? insertionSort(tempArr) : tempArr;
+        // sortedTempArr = !testSorted(tempArr) ? mergeSort(tempArr) : tempArr;
+        // sortedTempArr = !testSorted(tempArr) ? quickSort(tempArr) : tempArr;
+        // sortedTempArr = !testSorted(tempArr) ? bubbleSort(tempArr) : tempArr;
+
         // console.log(`sorted Temp Arr: ${sortedTempArr}`);
 
         tempPos.reverse().forEach(k => {
@@ -49,11 +54,7 @@ const shellSort = function (arr) {
           arr[k] = newVal;
 
         });
-
         // console.log(`updated main Arr: ${arr}`);
-
-
-
       }
     });
   return arr;
@@ -62,7 +63,7 @@ const shellSort = function (arr) {
 
 function driver() {
   unsortedArrs
-    // .filter( (a,i) => i === 0 )
+    // .filter( (a,i) => i === 1)
     .forEach(arr => {
       console.log(`\nSorting [ ${arr} ]`);
       let sortedArr = shellSort(arr, 0, arr.length - 1);

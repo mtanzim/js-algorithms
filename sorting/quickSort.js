@@ -43,10 +43,15 @@ const quickSort = function (arr, start, end, debug = false) {
     quickSort(arr, pivot + 1, end);
     if (debug) console.log(`after right sort [${arr}]`);
   };
+
+  return arr;
 }
 
+const quickDriver = function (arr) {
+  return quickSort([].concat(arr), 0, arr.length - 1);
+}
 
-module.exports = quickSort;
+module.exports = quickDriver;
 
 function driver() {
   unsortedArrs
@@ -59,4 +64,4 @@ function driver() {
     });
 }
 
-driver();
+// driver();
