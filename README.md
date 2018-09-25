@@ -15,8 +15,7 @@
 
 - [Sorting Algorithms Animated](https://www.toptal.com/developers/sorting-algorithms)
 - [Pass by Value vs Reference in JS](https://codeburst.io/explaining-value-vs-reference-in-javascript-647a975e12a0)
-- Linked Lists in JS
-  - <https://codeburst.io/js-data-structures-linked-list-3ed4d63e6571>
+- [Linked Lists in JS](https://codeburst.io/js-data-structures-linked-list-3ed4d63e6571)
 - [Merge Sort Algorithm Example](https://www.geeksforgeeks.org/merge-sort/)
 - [Binary Search Trees in JS](https://www.geeksforgeeks.org/implementation-binary-search-tree-javascript/)
 - Heaps
