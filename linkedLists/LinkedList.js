@@ -23,7 +23,7 @@ class LinkedList {
     do {
       if (currentNode.data > currentNode.next.data) return false;
       currentNode = currentNode.next;
-    } while (currentNode.next !== null)
+    } while (currentNode.next !== null);
     return true;
   }
 
@@ -87,7 +87,7 @@ class LinkedList {
       if (currentNode.data === value) return `${value} found on ${counter}th node`;
       currentNode = currentNode.next;
       counter++;
-    } while (currentNode !== null)
+    } while (currentNode !== null);
     return `${value} not found!`;
   }
 
@@ -98,7 +98,7 @@ class LinkedList {
       _length++;
       currentNode = currentNode.next;
 
-    } while (currentNode !== null)
+    } while (currentNode !== null);
     console.log(`Travsersed length is ${_length}`);
     console.log(`Recorded length is ${this.length}`);
     console.log(`${_length === this.length ? 'MATCH' : 'NOT MATCH'}`);
@@ -117,7 +117,7 @@ function sortedAddLL() {
   let linkedList = new LinkedList();
   const arrForLL = [0, 9, 3, 6, 10, 100, -1, -5, 200];
   arrForLL.forEach(val => {
-    linkedList.sortAndAdd(val)
+    linkedList.sortAndAdd(val);
   });
   linkedList.printLinkedList();
   console.log(`SORTED: ${linkedList.isSorted()}`);

@@ -19,6 +19,7 @@
 - [Merge Sort Algorithm Example](https://www.geeksforgeeks.org/merge-sort/)
 - [Binary Search Trees in JS](https://www.geeksforgeeks.org/implementation-binary-search-tree-javascript/)
 - Heaps
+  - [Heaps Wiki](https://en.wikipedia.org/wiki/Binary_heap#Parent_node)
   - [JS Heaps](https://www.youtube.com/watch?v=dM_JHpfFITs)
   - [Heaps Visualization](https://www.cs.usfca.edu/~galles/visualization/Heap.html)
 
@@ -27,3 +28,8 @@
 - When using recursion, be careful to return functions/results all the way back up the stack
   - [See BST Node](./binarySearchTrees/TreeNode.js)
   - <https://stackoverflow.com/questions/10719480/javascript-return-of-recursive-function>
+
+## To Do
+
+- Unify sorting algorithms (mutating vs non-mutating)
+- Refactor code, confirm efficiency and Big O time complexity

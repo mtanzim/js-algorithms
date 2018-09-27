@@ -4,6 +4,7 @@ const bubbleSort = require('./bubbleSort');
 const insertionSort = require('./insertionSort');
 const mergeSort = require('./mergeSort');
 const quickSort = require('./quickSort');
+const heapSort = require('./heapSortDriver');
 
 const genHarr = function (arrLength) {
   let hArr = [];
@@ -41,7 +42,8 @@ const shellSort = function (arr, isBubble = true) {
         // console.log(`positions Arr: ${tempPos}`);
 
         let sortedTempArr = [];
-        sortedTempArr = !testSorted(tempArr) ? insertionSort(tempArr) : tempArr;
+        sortedTempArr = !testSorted(tempArr) ? heapSort(tempArr) : tempArr;
+        // sortedTempArr = !testSorted(tempArr) ? insertionSort(tempArr) : tempArr;
         // sortedTempArr = !testSorted(tempArr) ? mergeSort(tempArr) : tempArr;
         // sortedTempArr = !testSorted(tempArr) ? quickSort(tempArr) : tempArr;
         // sortedTempArr = !testSorted(tempArr) ? bubbleSort(tempArr) : tempArr;

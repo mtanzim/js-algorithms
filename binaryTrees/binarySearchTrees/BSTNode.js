@@ -23,7 +23,7 @@ class TreeNode {
     if (curNode !== null) {
       this.inOrderTraverse(curNode.leftChild, arr);
       // console.log(curNode.data);
-      arr.push(curNode.data)
+      arr.push(curNode.data);
       // console.log(arr);
       // return arr;
       this.inOrderTraverse(curNode.rightChild, arr);
@@ -35,7 +35,7 @@ class TreeNode {
     // console.log(`Now at ${curNode ? curNode.data: 'empty'}`)
     if (curNode !== null) {
       // console.log(curNode.data);
-      arr.push(curNode.data)
+      arr.push(curNode.data);
       this.preOrderTraverse(curNode.leftChild, arr);
       this.preOrderTraverse(curNode.rightChild, arr);
       // console.log(arr);
@@ -49,7 +49,7 @@ class TreeNode {
       this.postOrderTraverse(curNode.leftChild, arr);
       this.postOrderTraverse(curNode.rightChild, arr);
       // console.log(curNode.data);
-      arr.push(curNode.data)
+      arr.push(curNode.data);
       // console.log(arr);
       return arr;
     }
@@ -149,7 +149,7 @@ class TreeNode {
       if (this.rightChild === null) {
         this.rightChild = new TreeNode(input);
       } else {
-        return this.rightChild.insertNode(input)
+        return this.rightChild.insertNode(input);
       }
     } else {
       if (this.leftChild === null) {
