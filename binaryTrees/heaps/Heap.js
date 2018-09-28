@@ -29,12 +29,37 @@ class Heap {
     this.heapData.push(input);
     if (isDebug) console.log(`\ninserrting ${input}`);
     if (isDebug) console.log(`start heap: [ ${this.heapData} ]`);
-    this.fixHeapUp(isDebug);
+    this.heapData = this.fixHeapUp([].concat(this.heapData), this.heapData.length - 1, isDebug);
     if (isDebug) console.log(`end heap: [ ${this.heapData} ]`);
   }
 
   buildHeap(arr) {
     arr.forEach(a => this.insertNode(a));
+  }
+
+  updateMember (index, newVal, isDebug = false) {
+
+    if (isDebug) console.log(`updating index: ${index} with newVal: ${newVal}, oldVal: ${this.heapData[index]}`);
+    if (!this.heapData[index]) {
+      throw new Error('Please provide a valid index');
+    } 
+    
+    let oldVal = this.heapData[index];
+    if (isDebug) console.log(`before swap: [ ${this.heapData} ]`);
+    this.heapData[index] = newVal;
+    
+    if (isDebug) console.log(`after swap: [ ${this.heapData} ]`);
+
+    if (newVal > oldVal) {
+      if (isDebug) console.log('fixing up');
+      // this.heapData.splice(0, index+1, ...this.fixHeapUp(this.heapData.slice(0, index+1), isDebug));
+      this.heapData = this.fixHeapUp(this.heapData, index, isDebug)
+    } else {
+      if (isDebug) console.log('fixing down');
+      // this.heapData.splice(index, this.heapData.length, ...this.fixHeapDown(this.heapData.slice(index, this.heapData.length), isDebug));
+      this.heapData = this.fixHeapDown(this.heapData, index, isDebug);
+    }
+
   }
 
   sortHeap(isDebug = false) {
@@ -47,7 +72,7 @@ class Heap {
     while (n > 0) {
       [newHeap[0], newHeap[n]] = [newHeap[n], newHeap[0]];
       if (isDebug) console.log(`after swap: [ ${newHeap}]`);
-      newHeap.splice(0, n, ...this.fixHeapDown(newHeap.slice(0, n), false));
+      newHeap.splice(0, n, ...this.fixHeapDown(newHeap.slice(0, n), 0, false));
       if (isDebug) console.log(`after fix: [ ${newHeap}]`);
       n--;
     }
@@ -56,7 +81,7 @@ class Heap {
 
   }
 
-  testHeapProp() {
+  testHeapProp(isDebug = false) {
     // check max val at root
     let maxVal = this.heapData[0];
     for (let i = 1; i < this.heapData.length; i++) {
@@ -64,14 +89,14 @@ class Heap {
     }
 
     // check left children are smaller
-    for (let j = 0; 2 * j + 1 <= this.heapData.length; j++) {
-      // console.log (`testing left child of ${this.heapData[j]}`);
+    for (let j = 0; 2 * j + 1 < this.heapData.length; j++) {
+      if (isDebug) console.log (`testing left child: ${this.heapData[2 * j + 1]} of ${this.heapData[j]}`);
       if (this.heapData[j] < this.heapData[2 * j + 1]) return false;
     }
 
     // check right children are smaller
-    for (let j = 0; 2 * j + 2 <= this.heapData.length; j++) {
-      // console.log(`testing right child of ${this.heapData[j]}`);
+    for (let j = 0; 2 * j + 2 < this.heapData.length; j++) {
+      if (isDebug) console.log(`testing right child: ${this.heapData[2 * j + 2]} of ${this.heapData[j]}`);
       if (this.heapData[j] < this.heapData[2 * j + 2]) return false;
     }
 
@@ -87,7 +112,7 @@ class Heap {
     if (this.heapData.length > 0) {
       this.heapData[0] = this.heapData.pop();
       if (isDebug) console.log(`after moving root: [ ${this.heapData} ]`);
-      this.fixHeapDown(this.heapData, isDebug);
+      this.heapData = this.fixHeapDown([].concat(this.heapData), 0, isDebug);
     } else {
       throw new Error('Empty Heap!');
     }
@@ -100,21 +125,21 @@ class Heap {
   }
 
   // this algorithm needs refactoring!!!
-  fixHeapDown(heap, isDebug = false) {
+  fixHeapDown(heap, startIndex, isDebug = false) {
 
     if (isDebug) console.log(`heap to fix: [ ${heap}]`);
-
-    let i = 0;
+    
+    let i = startIndex;
     while (i < heap.length) {
       let leftChildIdx = 2 * i + 1;
       let rightChildIdx = leftChildIdx + 1;
       // let temp = this.heapData[i];
-
+      
       if (isDebug) console.log(`\nheap length: ${heap.length}`);
       if (isDebug) console.log(`Checking index: ${i} with value: ${heap[i]}`);
       if (isDebug) console.log(`Checking left child index: ${leftChildIdx} with value: ${heap[leftChildIdx]}`);
       if (isDebug) console.log(`Checking right child index: ${rightChildIdx} with value: ${heap[rightChildIdx]}`);
-
+      
       // both children exist
       if (rightChildIdx < heap.length) {
         if (isDebug) console.log('both children exist!');
@@ -147,31 +172,37 @@ class Heap {
         // i = this.heapData.length;
       }
     }
-
+    
+    if (isDebug) console.log(`heap fixed down: [ ${heap}]`);
     return heap;
   }
 
-  fixHeapUp(isDebug = false) {
+  fixHeapUp(heap, startIndex, isDebug = false ) {
+    if (isDebug) console.log (`fixing heap up on [ ${heap} ]`)
     // heap contains 1 or more elements
-    if (this.heapData.length > 1) {
-      let curIndex = this.heapData.length - 1;
+    if (heap.length > 1) {
+      let curIndex = startIndex;
       let parentIndex = this.findParentId(curIndex);
-
+      
       if (isDebug) console.log(`current idx: ${curIndex}`);
       if (isDebug) console.log(`parent idx: ${parentIndex}`);
       // while the child is larger than the parent
-
-      while (this.heapData[curIndex] > this.heapData[parentIndex] && parentIndex >= 0) {
+      
+      while (heap[curIndex] > heap[parentIndex] && parentIndex >= 0) {
         // es6 destructuring: swap with parent
-        // if (this.heapData[curIndex] > this.heapData[parentIndex]){
-        if (isDebug) console.log(`need to swap parent: ${this.heapData[parentIndex]} with new: ${this.heapData[curIndex]}`);
-        [this.heapData[parentIndex], this.heapData[curIndex]] = [this.heapData[curIndex], this.heapData[parentIndex]];
-        // }
-        // go to parent index and reiterate
-        curIndex = parentIndex;
-        parentIndex = this.findParentId(curIndex);
+        // if (heap[curIndex] > heap[parentIndex]){
+          if (isDebug) console.log(`need to swap parent: ${heap[parentIndex]} with new: ${heap[curIndex]}`);
+          [heap[parentIndex], heap[curIndex]] = [heap[curIndex], heap[parentIndex]];
+          // }
+          // go to parent index and reiterate
+          curIndex = parentIndex;
+          parentIndex = this.findParentId(curIndex);
+        }
       }
-    }
+      
+      
+    if (isDebug) console.log (`after fixing heap: [ ${heap} ]`)
+    return heap;
   }
 
 
@@ -182,7 +213,9 @@ module.exports = Heap;
 function driver() {
 
 
-  unsortedArrs.forEach(A => {
+  unsortedArrs
+  .filter ( (a,i) => i === 0)
+  .forEach(A => {
 
     console.log(`\n=========================================\n`)
     console.log(`\nBuilding heap with [ ${A} ]`);
@@ -190,8 +223,34 @@ function driver() {
     heap.buildHeap(A);
     // A.forEach(a => heap.insertNode(a));
     heap.printHeap();
+    
+    // update key test
+    console.log(`\nTesting priority change with [ ${heap.heapToArray()} ]`);
+    // console.log(`Array length: ${A.length}`);
+    // console.log(`Heap data length: ${heap.heapToArray().length} `);
+    let expectedLen = A.length;
 
-    if (heap.testHeapProp) console.log(`isHeap: ${heap.testHeapProp()}`);
+    heap.heapToArray().forEach( (a,i) => {
+      let newVal = a + 100;
+      let isDebug = false;
+
+      console.log(`\nchanging value: ${heap.heapToArray()[i]} of index: ${i} with ${newVal} `);
+      heap.updateMember(i, newVal, isDebug);
+      heap.printHeap();
+      if (heap.testHeapProp() && heap.heapToArray().length === expectedLen) console.log(`isHeap: ${heap.testHeapProp()}`);
+      else throw new Error('NOT HEAP!');
+      newVal -= 200;
+      console.log (`\nchanging value: ${heap.heapToArray()[i]} of index: ${i} with ${newVal} `);
+      heap.updateMember(i, newVal, isDebug);
+      heap.printHeap();
+      if (heap.testHeapProp() && heap.heapToArray().length === expectedLen) console.log(`isHeap: ${heap.testHeapProp()}`);
+      else throw new Error('NOT HEAP!');
+    });
+
+    // console.log(`\nUpdating heap index ${updateIdx} with ${newVal}`);
+
+
+    if (heap.testHeapProp()) console.log(`isHeap: ${heap.testHeapProp()}`);
     else throw new Error('NOT HEAP!');
     
     console.log(`\nTesting root removal`);
@@ -201,7 +260,7 @@ function driver() {
       // if (i === startLen - 3) isDebug = true;
       console.log(`Removed root: ${heap.deleteRoot(isDebug)}`);
       heap.printHeap();
-      if (heap.testHeapProp) console.log(`isHeap: ${heap.testHeapProp()}`);
+      if (heap.testHeapProp()) console.log(`isHeap: ${heap.testHeapProp()}`);
       else throw new Error('NOT HEAP!');
     }
 
@@ -214,4 +273,4 @@ function driver() {
 
 }
 
-// driver();
+driver();
