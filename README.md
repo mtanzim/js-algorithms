@@ -22,6 +22,7 @@
   - [Heaps Wiki](https://en.wikipedia.org/wiki/Binary_heap#Parent_node)
   - [JS Heaps](https://www.youtube.com/watch?v=dM_JHpfFITs)
   - [Heaps Visualization](https://www.cs.usfca.edu/~galles/visualization/Heap.html)
+- [Simple Hashtable in Javascript](https://www.youtube.com/watch?v=F95z5Wxd9ks)
 
 ## Lessons Learned
 
