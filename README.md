@@ -29,6 +29,7 @@
 - When using recursion, be careful to return functions/results all the way back up the stack
   - [See BST Node](./binarySearchTrees/TreeNode.js)
   - <https://stackoverflow.com/questions/10719480/javascript-return-of-recursive-function>
+- Classes and inheritance with ES6; see [hashtable examples]('./hashing/hashDriver.js')
 
 ## To Do
 
