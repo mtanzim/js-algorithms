@@ -61,25 +61,23 @@ const driverCode = () => {
   let arrPostOrder = myBST.postOrderTraverse();
   let arrInOrder = myBST.inOrderTraverse();
   
-  
-  
-  
-  
   // delete node(s)
   treeArr
   // .filter(d => d === -1)
   .reverse()
   .forEach(d => myBST.deleteNode(d));
   
-  console.log(arrInOrder);
+  console.log(`in order: [ ${arrInOrder} ]`);
   treeArr.forEach(a => myBST.insertNode(a));
   arrInOrder.forEach(d => myBST.deleteNode(d));
   myBST.printBST();
-  console.log(arrPreOrder);
+  console.log(`pre order: [ ${arrPreOrder} ]`);
+  // console.log(arrPreOrder);
   treeArr.forEach(a => myBST.insertNode(a));
   arrPreOrder.forEach(d => myBST.deleteNode(d));
   myBST.printBST();
-  console.log(arrPostOrder);
+  console.log(`post order: [ ${arrPostOrder} ]`);
+  // console.log(arrPostOrder);
   treeArr.forEach(a => myBST.insertNode(a));
   arrPostOrder.forEach(d => myBST.deleteNode(d));
   myBST.printBST();

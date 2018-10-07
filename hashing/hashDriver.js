@@ -12,6 +12,7 @@ function driver(ht) {
   ht.add("Tucker", 18);
   ht.add("Tucker", 55);
   ht.add("Guss", 102);
+  ht.add("Guss", 103);
   ht.add("Russ", 110);
   ht.add("Jon", 67);
   ht.add("Monty", 32);
@@ -39,11 +40,18 @@ function driver(ht) {
   console.log(ht.lookup("Monty"));
   console.log(ht.lookup("Shanti"));
   console.log(ht.lookup("Bob"));
-
+  
+  console.log(`\nDELETING\n`)
+  console.log(`\nBEFORE DELETE\n`)
+  
+  ht.print();
   console.log(ht.delete("Tanzim"));
   console.log(ht.delete("Sarah"));
+  // console.log(ht.lookup("Russ"));
   console.log(ht.delete("Russ"));
   console.log(ht.delete("Bob"));
+
+  console.log(`\nAFTER DELETE\n`)
   ht.print();
 
   console.log('\nFind after delete!\n');
