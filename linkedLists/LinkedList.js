@@ -16,6 +16,10 @@ class LinkedList {
     this.length++;
   }
 
+  getHead() {
+    return this.head;
+  }
+
   isSorted() {
     // empty LL or LL with 1 element is sorted
     if (this.head === null || this.head.next === null) return true;
@@ -105,6 +109,24 @@ class LinkedList {
 
   }
 
+  arrToLL(arr) {
+    for (let item of arr.reverse()) {
+      this.addToHead(item);
+    }
+  }
+
+  static getLinkedListAsArr(curNode = this.head) {
+    let arr = [];
+    // let curNode = this.head;
+    while (curNode !== null) {
+      arr.push(curNode.data);
+      curNode = curNode.next;
+    }
+
+    // console.log(arr);
+    return arr;
+  }
+
   printLinkedList() {
     console.log(JSON.stringify(this, null, 2));
   }
@@ -171,6 +193,6 @@ function unsortedLLTests() {
 }
 
 // unsortedLLTests();
-sortedAddLL();
+// sortedAddLL();
 
 
