@@ -96,17 +96,21 @@ class LinkedList {
   }
 
   findLength() {
+    return this.length;
+
+  }
+
+  static findAnyLength (currentNode) {
     let _length = 0;
-    let currentNode = this.head;
+    // let currentNode = this.head;
     do {
       _length++;
       currentNode = currentNode.next;
 
     } while (currentNode !== null);
-    console.log(`Travsersed length is ${_length}`);
-    console.log(`Recorded length is ${this.length}`);
-    console.log(`${_length === this.length ? 'MATCH' : 'NOT MATCH'}`);
+    // console.log(`Travsersed length is ${_length}`);
 
+    return _length;
   }
 
   arrToLL(arr) {
