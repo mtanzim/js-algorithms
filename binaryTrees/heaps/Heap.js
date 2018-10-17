@@ -1,3 +1,9 @@
+const testHeapPropFunc = require('./testHeapProperty');
+const fixHeapUpFunc = require('./fixHeapUp');
+const findParentIdFunc = require('./findParentId');
+
+
+
 /* Notes
 Assumes 0th position is NOT NULL
 left child:   2i+1
@@ -6,15 +12,14 @@ parent:       math.floor( (i - 1) /  2 )
 
 */
 
-const testSorted = require('../../sorting/testSorted');
-const unsortedArrs = require('../../sorting/arrCollection');
 
 // implement a max heap
 class Heap {
   constructor() {
 
     this.heapData = [];
-    // this.heapData = [null];
+    this.fixHeapUp = fixHeapUpFunc(true);
+    this.findParentId = findParentIdFunc;
   }
   printHeap() {
     // console.log(this);
@@ -82,6 +87,11 @@ class Heap {
   }
 
   testHeapProp(isDebug = false) {
+    //boolean argument is isMax
+    return testHeapPropFunc(this.heapData, true, isDebug);
+  }
+  
+/*   testHeapProp(isDebug = false) {
     // check max val at root
     let maxVal = this.heapData[0];
     for (let i = 1; i < this.heapData.length; i++) {
@@ -101,7 +111,7 @@ class Heap {
     }
 
     return true;
-  }
+  } */
 
 
   deleteRoot(isDebug = false) {
@@ -120,9 +130,9 @@ class Heap {
 
   }
 
-  findParentId(childId) {
+/*   findParentId(childId) {
     return Math.floor((childId - 1) / 2);
-  }
+  } */
 
   // this algorithm needs refactoring!!!
   fixHeapDown(heap, startIndex, isDebug = false) {
@@ -177,7 +187,11 @@ class Heap {
     return heap;
   }
 
-  fixHeapUp(heap, startIndex, isDebug = false ) {
+/*   fixHeapUp(heap, startIndex, this.findParentId, isDebug = false) {
+    return fixHeapUpFunc(heap, startIndex, isDebug = false);
+  } */
+
+/*   fixHeapUp(heap, startIndex, isDebug = false ) {
     if (isDebug) console.log (`fixing heap up on [ ${heap} ]`)
     // heap contains 1 or more elements
     if (heap.length > 1) {
@@ -203,74 +217,10 @@ class Heap {
       
     if (isDebug) console.log (`after fixing heap: [ ${heap} ]`)
     return heap;
-  }
+  } */
 
 
 }
 
 module.exports = Heap;
 
-function driver() {
-
-
-  unsortedArrs
-  .filter ( (a,i) => i === 0)
-  .forEach(A => {
-
-    console.log(`\n=========================================\n`)
-    console.log(`\nBuilding heap with [ ${A} ]`);
-    let heap = new Heap();
-    heap.buildHeap(A);
-    // A.forEach(a => heap.insertNode(a));
-    heap.printHeap();
-    
-    // update key test
-    console.log(`\nTesting priority change with [ ${heap.heapToArray()} ]`);
-    // console.log(`Array length: ${A.length}`);
-    // console.log(`Heap data length: ${heap.heapToArray().length} `);
-    let expectedLen = A.length;
-
-    heap.heapToArray().forEach( (a,i) => {
-      let newVal = a + 100;
-      let isDebug = false;
-
-      console.log(`\nchanging value: ${heap.heapToArray()[i]} of index: ${i} with ${newVal} `);
-      heap.updateMember(i, newVal, isDebug);
-      heap.printHeap();
-      if (heap.testHeapProp() && heap.heapToArray().length === expectedLen) console.log(`isHeap: ${heap.testHeapProp()}`);
-      else throw new Error('NOT HEAP!');
-      newVal -= 200;
-      console.log (`\nchanging value: ${heap.heapToArray()[i]} of index: ${i} with ${newVal} `);
-      heap.updateMember(i, newVal, isDebug);
-      heap.printHeap();
-      if (heap.testHeapProp() && heap.heapToArray().length === expectedLen) console.log(`isHeap: ${heap.testHeapProp()}`);
-      else throw new Error('NOT HEAP!');
-    });
-
-    // console.log(`\nUpdating heap index ${updateIdx} with ${newVal}`);
-
-
-    if (heap.testHeapProp()) console.log(`isHeap: ${heap.testHeapProp()}`);
-    else throw new Error('NOT HEAP!');
-    
-    console.log(`\nTesting root removal`);
-    let startLen = heap.heapToArray().length;
-    for (let i = 0; i < Math.floor(startLen / 2); i++) {
-      let isDebug = false;
-      // if (i === startLen - 3) isDebug = true;
-      console.log(`Removed root: ${heap.deleteRoot(isDebug)}`);
-      heap.printHeap();
-      if (heap.testHeapProp()) console.log(`isHeap: ${heap.testHeapProp()}`);
-      else throw new Error('NOT HEAP!');
-    }
-
-    let sortedHeap = heap.sortHeap();
-    console.log(`\nsorted heap is [ ${sortedHeap} ]`);
-    if (testSorted(sortedHeap)) console.log(`SORTED: ${testSorted(sortedHeap)}`);
-    else throw new Error('NOT SORTED!');
-
-  });
-
-}
-
-driver();
