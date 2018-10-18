@@ -1,5 +1,5 @@
-// const Heap = require('./Heap');
-const Heap = require('./MinHeap');
+const Heap = require('./Heap');
+// const Heap = require('./MinHeap');
 const testSorted = require('../../sorting/testSorted');
 const unsortedArrs = require('../../sorting/arrCollection');
 

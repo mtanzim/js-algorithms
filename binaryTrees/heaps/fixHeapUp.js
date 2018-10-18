@@ -3,16 +3,12 @@ const findParentId = require('./findParentId');
 module.exports = (isMaxHeap) => function fixHeapUp(heap, startIndex, isDebug = false) {
   isDebug = true;
 
-
-
-
-
   if (isDebug) console.log(`fixing heap up on [ ${heap} ]`)
   if (isDebug) console.log(`maxHeap: ${isMaxHeap}`)
   // heap contains 1 or more elements
   if (heap.length > 1) {
     let curIndex = startIndex;
-    let parentIndex = this.findParentId(curIndex);
+    let parentIndex = findParentId(curIndex);
 
     const swap = () => {
       // es6 destructuring: swap with parent
