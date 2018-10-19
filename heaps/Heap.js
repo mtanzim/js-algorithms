@@ -23,12 +23,16 @@ class Heap {
     this.updateMemberHigher = updateHeap(isMaxHeap);
     this.testHeapPropFuncHigher = testHeapPropFunc(isMaxHeap);
 
-    console.log(`\nInstantiated a ${isMaxHeap ? 'maxHeap' : 'minHeap'}\n`);
+    // console.log(`\nInstantiated a ${isMaxHeap ? 'maxHeap' : 'minHeap'}\n`);
   }
 
   printHeap() {
     // console.log(this);
     console.log(this.heapData);
+  }
+
+  getLength() {
+    return this.heapData.length;
   }
 
   heapToArray() {
@@ -75,12 +79,20 @@ class Heap {
     return this.testHeapPropFuncHigher(this.heapData, isDebug);
   }
 
+  popHeap() {
+    // this.heapData.pop();
+  }
+
   deleteRoot(isDebug = false) {
     let oldRoot = this.heapData[0];
     if (isDebug) console.log(`\nstarting delete with: [ ${this.heapData} ]`);
     //remove first element
     // bring last element as the root
-    if (this.heapData.length > 0) {
+    if (this.getLength () === 1) {
+      this.heapData = [];
+      return oldRoot;
+    }
+    else if (this.heapData.length > 1) {
       this.heapData[0] = this.heapData.pop();
       if (isDebug) console.log(`after moving root: [ ${this.heapData} ]`);
       this.heapData = this.fixHeapDown([].concat(this.heapData), 0, isDebug);

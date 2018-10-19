@@ -1,7 +1,7 @@
 
 const findParentId = require('./findParentId');
 module.exports = (isMaxHeap) => function fixHeapUp(heap, startIndex, isDebug = false) {
-  isDebug = true;
+  // isDebug = true;
 
   if (isDebug) console.log(`fixing heap up on [ ${heap} ]`)
   if (isDebug) console.log(`maxHeap: ${isMaxHeap}`)
