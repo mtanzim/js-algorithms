@@ -1,10 +1,9 @@
 // @ts-check
-
 const testHeapPropFunc = require('./testHeapProperty');
 const fixHeapUpFunc = require('./fixHeapUp');
-const fixHeapDown = require('./fixHeapDown');
+const fixHeapDownFunc = require('./fixHeapDown');
 const findParentIdFunc = require('./findParentId');
-const updateHeap =  require('./updateHeap');
+const updateHeap = require('./updateHeap');
 
 /* Notes
 Assumes 0th position is NOT NULL
@@ -13,16 +12,20 @@ right child:  2i + 2
 parent:       math.floor( (i - 1) /  2 )
 */
 
-// implement a max heap
+// implement a heap based on constructor input
 class Heap {
-  constructor() {
+  constructor(isMaxHeap) {
 
     this.heapData = [];
-    this.fixHeapUp = fixHeapUpFunc(true);
+    this.fixHeapUp = fixHeapUpFunc(isMaxHeap);
     this.findParentId = findParentIdFunc;
-    this.fixHeapDown = fixHeapDown(true);
-    this.updateMemberHigher = updateHeap(true);
+    this.fixHeapDown = fixHeapDownFunc(isMaxHeap);
+    this.updateMemberHigher = updateHeap(isMaxHeap);
+    this.testHeapPropFuncHigher = testHeapPropFunc(isMaxHeap);
+
+    console.log(`\nInstantiated a ${isMaxHeap ? 'maxHeap' : 'minHeap'}\n`);
   }
+
   printHeap() {
     // console.log(this);
     console.log(this.heapData);
@@ -44,7 +47,7 @@ class Heap {
     arr.forEach(a => this.insertNode(a));
   }
 
-  updateMember (index, newVal, isDebug = false) {
+  updateMember(index, newVal, isDebug = false) {
     this.updateMemberHigher(this.heapData, index, newVal, isDebug);
   }
 
@@ -69,7 +72,7 @@ class Heap {
 
   testHeapProp(isDebug = false) {
     //boolean argument is isMax
-    return testHeapPropFunc(this.heapData, true, isDebug);
+    return this.testHeapPropFuncHigher(this.heapData, isDebug);
   }
 
   deleteRoot(isDebug = false) {
@@ -91,4 +94,3 @@ class Heap {
 }
 
 module.exports = Heap;
-

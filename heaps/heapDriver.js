@@ -1,9 +1,11 @@
+// @ts-check
+
 const Heap = require('./Heap');
 // const Heap = require('./MinHeap');
-const testSorted = require('../../sorting/testSorted');
-const unsortedArrs = require('../../sorting/arrCollection');
+const testSorted = require('../sorting/testSorted');
+const unsortedArrs = require('../sorting/arrCollection');
 
-function driver() {
+const driver = function (isMaxHeap) {
 
 
   unsortedArrs
@@ -11,8 +13,8 @@ function driver() {
     .forEach(A => {
 
       console.log(`\n=========================================\n`)
-      console.log(`\nBuilding heap with [ ${A} ]`);
-      let heap = new Heap();
+      console.log(`\nBuilding a ${isMaxHeap ? 'maxHeap' : 'minHeap' } with [ ${A} ]`);
+      let heap = new Heap(isMaxHeap);
       heap.buildHeap(A);
       // A.forEach(a => heap.insertNode(a));
       heap.printHeap();
@@ -25,6 +27,7 @@ function driver() {
 
       heap.heapToArray().forEach((a, i) => {
         let newVal = a + 100;
+        if (!isMaxHeap) newVal -= 200;
         let isDebug = false;
 
         console.log(`\nchanging value: ${heap.heapToArray()[i]} of index: ${i} with ${newVal} `);
@@ -59,11 +62,14 @@ function driver() {
 
       let sortedHeap = heap.sortHeap();
       console.log(`\nsorted heap is [ ${sortedHeap} ]`);
-      if (testSorted(sortedHeap)) console.log(`SORTED: ${testSorted(sortedHeap)}`);
+      if (testSorted(sortedHeap, isMaxHeap)) console.log(`SORTED: ${testSorted(sortedHeap, isMaxHeap)}`);
       else throw new Error('NOT SORTED!');
 
     });
 
 }
 
-driver();
+module.exports = driver;
+
+driver(true);
+driver(false);
