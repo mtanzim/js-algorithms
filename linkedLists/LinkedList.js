@@ -5,8 +5,8 @@ class LinkedList {
   }
 
   // time complexity of O(1); not affected by list size
-  addToHead(data) {
-    const newNode = { data };
+  addToHead(val) {
+    const newNode = { val };
     // make new node point to where the head is point
     // NOTE: ordering is extremely important here
     // Otherwise, the link of the current HEAD will be LOST!!!
@@ -133,6 +133,10 @@ class LinkedList {
 
   printLinkedList() {
     console.log(JSON.stringify(this, null, 2));
+  }
+
+  linkedListToString() {
+    return JSON.stringify(this, null, 2);
   }
 }
 
